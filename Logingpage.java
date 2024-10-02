@@ -60,6 +60,7 @@ public class Logingpage implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
         frame.setLayout(null);
+		frame.setLocationRelativeTo(frame);
         frame.setVisible(true);
     }
     
@@ -79,8 +80,11 @@ public class Logingpage implements ActionListener {
                 if (logininfo.get(userID).equals(password)) {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login Successfully");
+
+					frame.dispose();
+
                     //A code to Proceed to welcome page after you have logged in
-                    new WelcomePage();
+                  WelcomePage welcomePage = new WelcomePage(userID);
                 } else {
                     messageLabel.setForeground(Color.red);
                     messageLabel.setText("Invalid Password");
@@ -100,7 +104,7 @@ public class Logingpage implements ActionListener {
         
         HashMap<String, String> loginInfo = new HashMap<>();
         loginInfo.put("john", "password123");
-        loginInfo.put("brian", "1234567");
+        loginInfo.put("JohnBrian", "1234567");
 
         new Logingpage(loginInfo);
     }
